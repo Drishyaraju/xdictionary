@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css'
+import './App.css'; // Import your CSS file
 
 const XDictionary = () => {
     const [dictionary] = useState([
@@ -12,6 +12,11 @@ const XDictionary = () => {
     const [result, setResult] = useState('');
 
     const handleSearch = () => {
+        if (searchTerm.trim() === '') {
+            setResult("Please enter a search term.");
+            return;
+        }
+
         const foundWord = dictionary.find(entry => entry.word.toLowerCase() === searchTerm.toLowerCase());
         if (foundWord) {
             setResult(foundWord.meaning);
